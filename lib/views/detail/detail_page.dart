@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer_app/components/nav/nav_bar.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: NavBar(),
       body: Container(
         child: Center(
           child: TextButton(onPressed: (){

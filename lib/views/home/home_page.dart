@@ -29,15 +29,14 @@ class _HomePageState extends State<HomePage> {
     return Consumer<ProductModal>(
       builder: (context, data, child) {
         return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(70.0),
-            child: NavBar(),
-          ),
+          appBar: NavBar(),
           body: Container(
             child: Column(
               children: <Widget>[
                 Text('Everything in your door step'),
-
+                TextButton(onPressed: (){
+                  Navigator.pushNamed(context, '/detail');
+                }, child: Text('Go to Detail'))
               ],
             ),
           ),
