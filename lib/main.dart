@@ -21,7 +21,7 @@ class GreenGrocerApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: '/',
       routes: {
-        '/' : (context) => HomePage(),
+        '/' : (context) => HomePage(context),
         '/detail' : (context) => DetailPage(),
         '/basket' : (context) => BasketPage()
       },
