@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer_app/components/nav/nav_bar.dart';
 import 'package:greengrocer_app/provider/product_modal.dart';
 import 'package:provider/provider.dart';
 
@@ -28,22 +29,15 @@ class _HomePageState extends State<HomePage> {
     return Consumer<ProductModal>(
       builder: (context, data, child) {
         return Scaffold(
-          appBar: AppBar(),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(70.0),
+            child: NavBar(),
+          ),
           body: Container(
             child: Column(
               children: <Widget>[
                 Text('Everything in your door step'),
-                SizedBox(
-                  height: 200.0,
-                  child: ListView.builder(
-                    itemCount: data.products.length,
-                    itemBuilder: (BuildContext context, int index){
-                      return Container(
-                        child: Text(data.products[index]["name"]),
-                      );
-                    },
-                  ),
-                )
+
               ],
             ),
           ),
@@ -52,3 +46,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+                // SizedBox(
+                //   height: 200.0,
+                //   child: ListView.builder(
+                //     itemCount: data.products.length,
+                //     itemBuilder: (BuildContext context, int index){
+                //       return Container(
+                //         child: Text(data.products[index]["name"]),
+                //       );
+                //     },
+                //   ),
+                // )
