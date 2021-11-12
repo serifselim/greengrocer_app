@@ -1,50 +1,30 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/views/basket/basket_page.dart';
+import 'package:greengrocer_app/views/detail/detail_page.dart';
+import 'package:greengrocer_app/views/home/home_page.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ProductModal(),
+      child: GreenGrocerApp(),
+    ),
+  );
+}
 
-class MyApp extends StatelessWidget {
+class GreenGrocerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: HomePage()
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List _items = [];
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/data/items.json');
-    final data = await jsonDecode(response);
-    setState(() {
-      _items = data["items"];
-    });
-  } 
-  
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    readJson();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Image(image: AssetImage(_items.isNotEmpty ? _items[0]["image"] : 'assets/images/cabbage.png'),),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => HomePage(),
+        '/detail' : (context) => DetailPage(),
+        '/basket' : (context) => BasketPage()
+      },
     );
   }
 }
