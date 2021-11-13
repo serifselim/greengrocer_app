@@ -29,7 +29,9 @@ class _HomePageState extends State<HomePage> {
     return Consumer<ProductModal>(
       builder: (context, data, child) {
         return Scaffold(
-          appBar: NavBar(),
+          appBar: NavBar(
+            currentRoute: ModalRoute.of(context)?.settings.name,
+          ),
           body: Container(
             child: Column(
               children: <Widget>[
@@ -45,17 +47,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-
-                // SizedBox(
-                //   height: 200.0,
-                //   child: ListView.builder(
-                //     itemCount: data.products.length,
-                //     itemBuilder: (BuildContext context, int index){
-                //       return Container(
-                //         child: Text(data.products[index]["name"]),
-                //       );
-                //     },
-                //   ),
-                // )

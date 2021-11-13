@@ -12,7 +12,9 @@ class _BasketPageState extends State<BasketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavBar(),
+      appBar: NavBar(
+        currentRoute: ModalRoute.of(context)?.settings.name,
+      ),
       body: Container(
         child: Center(
           child: TextButton(onPressed: (){
