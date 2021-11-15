@@ -11,7 +11,7 @@ ThemeData kTheme() {
         color: Colors.black,
       ),
       headline2: TextStyle(
-        fontSize: 18.0,
+        fontSize: 20.0,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),

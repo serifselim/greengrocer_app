@@ -25,7 +25,7 @@ SizedBox kTitleH1({required BuildContext context, required String title}) {
 Text kTitleH2({required BuildContext context, required String title}) {
   return Text(
     title,
-    style: Theme.of(context).textTheme.headline1,
+    style: Theme.of(context).textTheme.headline2,
   );
 }
 
