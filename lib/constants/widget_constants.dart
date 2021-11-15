@@ -12,6 +12,7 @@ Image kImage(String asset) {
   );
 }
 
+// Text Widgets
 SizedBox kTitleH1({required BuildContext context, required String title}) {
   return SizedBox(
     width: 260.0,

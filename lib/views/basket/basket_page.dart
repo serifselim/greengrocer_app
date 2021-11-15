@@ -22,23 +22,63 @@ class _BasketPageState extends State<BasketPage> {
           appBar: NavBar(
             currentRoute: ModalRoute.of(context)?.settings.name,
           ),
-          body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                kTitleH1(
-                  context: context,
-                  title: 'Your Basket',
+          body: Column(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      kTitleH1(
+                        context: context,
+                        title: 'Your Basket',
+                      ),
+                      kSpacer(33.0),
+                      BasketList(data: data),
+                    ],
+                  ),
                 ),
-                kSpacer(33.0),
-                BasketList(data: data),
-
-              ],
-            ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 20.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          kTitleH2(context: context, title: 'Total'),
+                          kTitleH2(context: context, title: '\$300')
+                        ],
+                      ),
+                      TextButton(
+                        onPressed: null,
+                        child: const Text(
+                          'Purchase',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFF6FCF97)),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
           ));
     });
   }
 }
-
-
