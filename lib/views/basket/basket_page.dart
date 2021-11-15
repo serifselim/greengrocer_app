@@ -29,14 +29,17 @@ class _BasketPageState extends State<BasketPage> {
                   context: context,
                   title: 'Your Basket',
                 ),
-                ListView.builder(
-                  itemCount: data.basket.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var product = data.basket[index];
-                    return Container(
-                      child: Text(product["name"]),
-                    );
-                  },
+                SizedBox(
+                  height: 500,
+                  child: ListView.builder(
+                    itemCount: data.basketList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var product = data.basketList[index];
+                      return Container(
+                        child: Text(product["name"]),
+                      );
+                    },
+                  ),
                 )
               ],
             ),

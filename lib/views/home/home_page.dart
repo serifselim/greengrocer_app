@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<ProductModal>(
       builder: (context, data, child) {
-        var products = data.products;
+        var products = data.productsList;
         return Scaffold(
           appBar: NavBar(
             currentRoute: ModalRoute.of(context)?.settings.name,

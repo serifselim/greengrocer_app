@@ -3,11 +3,10 @@ import 'package:greengrocer_app/constants/widget_constants.dart';
 
 class HomeProductsListItem extends StatelessWidget {
   final dynamic product;
-
-  const HomeProductsListItem({
-    Key? key,
-    required this.product,
-  }) : super(key: key);
+  final VoidCallback onPressed;
+  const HomeProductsListItem(
+      {Key? key, required this.product, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,24 +42,19 @@ class HomeProductsListItem extends StatelessWidget {
                 ),
                 Container(
                   decoration: buttonDecoration(),
-                  child: addButton(),
+                  child: IconButton(
+                    iconSize: 30.0,
+                    onPressed: onPressed,
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
                 )
               ],
             ),
           )
         ],
-      ),
-    );
-  }
-  
-  // Widget Side
-  IconButton addButton() {
-    return const IconButton(
-      iconSize: 30.0,
-      onPressed: null,
-      icon: Icon(
-        Icons.add,
-        color: Colors.white,
       ),
     );
   }

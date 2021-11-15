@@ -9,7 +9,6 @@ class HomeProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // Grid Settings
     const gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 2,
@@ -22,11 +21,14 @@ class HomeProductsList extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: data.products.length,
+        itemCount: data.productsList.length,
         gridDelegate: gridDelegate,
         itemBuilder: (BuildContext context, int index) {
-          var product = data.products[index];
-          return HomeProductsListItem(product: product);
+          var product = data.productsList[index];
+          return HomeProductsListItem(
+            product: product,
+            onPressed: () => data.addToBasketFromProducts(product),
+          );
         },
       ),
     );
