@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer_app/constants/style_constants.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
 
 class HomeProductsListItem extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeProductsListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: containerDecoration(),
+      decoration: containerDecoration(radius: 19.0),
       padding: const EdgeInsets.only(top: 13.0, left: 13.0, right: 13.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +46,7 @@ class HomeProductsListItem extends StatelessWidget {
                   child: IconButton(
                     iconSize: 30.0,
                     onPressed: onPressed,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                       color: Colors.white,
                     ),
@@ -60,17 +61,7 @@ class HomeProductsListItem extends StatelessWidget {
   }
 
   // Style Side
-  BoxDecoration buttonDecoration() {
-    return const BoxDecoration(
-      color: Color(0xFF6FCF97),
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-    );
-  }
 
-  BoxDecoration containerDecoration() {
-    return BoxDecoration(
-      border: Border.all(color: const Color(0xE5E5E5E5)),
-      borderRadius: const BorderRadius.all(Radius.circular(19.0)),
-    );
-  }
+
+
 }

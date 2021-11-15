@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:greengrocer_app/components/basket/basket_list.dart';
 import 'package:greengrocer_app/components/nav/nav_bar.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
 import 'package:greengrocer_app/provider/product_modal.dart';
@@ -24,26 +25,20 @@ class _BasketPageState extends State<BasketPage> {
           body: Container(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 kTitleH1(
                   context: context,
                   title: 'Your Basket',
                 ),
-                SizedBox(
-                  height: 500,
-                  child: ListView.builder(
-                    itemCount: data.basketList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      var product = data.basketList[index];
-                      return Container(
-                        child: Text(product["name"]),
-                      );
-                    },
-                  ),
-                )
+                kSpacer(33.0),
+                BasketList(data: data),
+
               ],
             ),
           ));
     });
   }
 }
+
+

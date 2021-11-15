@@ -21,13 +21,13 @@ class ProductModal extends ChangeNotifier {
       basketList.add(product);
     } else {
       for (var basketItem in basketList) {
-        if(basketItem["name"] == product["name"]){
+        if (basketItem["name"] == product["name"]) {
           isThere = true;
         }
       }
       if (!isThere) {
         basketList.add(product);
-      } else{
+      } else {
         print('there is!');
       }
     }

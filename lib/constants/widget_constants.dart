@@ -29,6 +29,13 @@ Text kTitleH2({required BuildContext context, required String title}) {
   );
 }
 
+Text kTitleH5({required BuildContext context, required String title}) {
+  return Text(
+    title,
+    style: Theme.of(context).textTheme.headline5,
+  );
+}
+
 Text kDecs({required BuildContext context, required String text}){
   return Text(
     text,
