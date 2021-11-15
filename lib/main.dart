@@ -5,6 +5,8 @@ import 'package:greengrocer_app/views/detail/detail_page.dart';
 import 'package:greengrocer_app/views/home/home_page.dart';
 import 'package:provider/provider.dart';
 
+import 'constants/theme_constants.dart';
+
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -18,14 +20,7 @@ class GreenGrocerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.lightBlue[800],
-        scaffoldBackgroundColor: Colors.white,
-
-        textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-      ),
+      theme: kTheme(),
       title: 'Material App',
       initialRoute: '/',
       routes: {
