@@ -18,15 +18,20 @@ class GreenGrocerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.white
+      theme: ThemeData(
+        primaryColor: Colors.lightBlue[800],
+        scaffoldBackgroundColor: Colors.white,
+
+        textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
       ),
       title: 'Material App',
       initialRoute: '/',
       routes: {
-        '/' : (context) => HomePage(context),
-        '/detail' : (context) => DetailPage(),
-        '/basket' : (context) => BasketPage()
+        '/': (context) => HomePage(context),
+        '/detail': (context) => DetailPage(),
+        '/basket': (context) => BasketPage()
       },
     );
   }
