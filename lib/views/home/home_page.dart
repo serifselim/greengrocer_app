@@ -46,9 +46,7 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       title: 'Everything in your door step',
                     ),
-                    kSpacer(33.0),
-                    kImage('assets/images/banner.png'),
-                    kSpacer(33.0),
+                    bannerImage(),
                     HomeProductsList(
                       data: data,
                     )
@@ -59,6 +57,13 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       },
+    );
+  }
+
+  Container bannerImage() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 33.0),
+      child: kImage('assets/images/banner.png'),
     );
   }
 }
