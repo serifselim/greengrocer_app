@@ -15,18 +15,20 @@ class NavBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: currentRoute != '/' ? backButton(context) : null,
-      actions: currentRoute != '/basket' ? [basketButton()] : null,
+      actions: currentRoute != '/basket' ? [basketButton(context)] : null,
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
       elevation: 0.0,
     );
   }
 
-  Container basketButton() {
+  Container basketButton(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 30.0),
       child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/basket');
+        },
         icon: const Icon(
           Icons.shopping_basket_outlined,
           color: Colors.black,
