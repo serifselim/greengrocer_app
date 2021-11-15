@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             currentRoute: ModalRoute.of(context)?.settings.name,
           ),
           body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [

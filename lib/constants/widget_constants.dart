@@ -22,12 +22,16 @@ SizedBox kTitleH1({required BuildContext context, required String title}) {
   );
 }
 
-SizedBox kTitleH2({required BuildContext context, required String title}) {
-  return SizedBox(
-    width: 260.0,
-    child: Text(
-      title,
-      style: Theme.of(context).textTheme.headline1,
-    ),
+Text kTitleH2({required BuildContext context, required String title}) {
+  return Text(
+    title,
+    style: Theme.of(context).textTheme.headline1,
+  );
+}
+
+Text kDecs({required BuildContext context, required String text}){
+  return Text(
+    text,
+    style: Theme.of(context).textTheme.caption,
   );
 }
