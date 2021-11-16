@@ -26,7 +26,7 @@ class BasketPurchase extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 kTitleH2(context: context, title: 'Total'),
-                kTitleH2(context: context, title: '\$${data.totalPrice}')
+                kTitleH2(context: context, title: '\$${data.totalPrice.toStringAsFixed(2)}')
               ],
             ),
             TextButton(

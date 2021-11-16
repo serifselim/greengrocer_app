@@ -25,6 +25,11 @@ class ProductModal extends ChangeNotifier {
       for (var basketItem in basketList) {
         if (basketItem["name"] == product["name"]) {
           isThere = true;
+          int indexOf = basketList.indexOf(basketItem);
+          changeTotalCount(indexOf, "+");
+          // basketList[indexOf]["total"] =
+          //     (int.parse(basketList[indexOf]["total"]) + 1).toString();
+          // totalPrice = getTotalPrice();
         }
       }
       if (!isThere) {
@@ -43,12 +48,23 @@ class ProductModal extends ChangeNotifier {
       for (var basketItem in basketList) {
         double itemPrice = double.parse(basketItem["price"]);
         double itemTotal = double.parse(basketItem["total"]);
-        
+
         totalPrice += itemPrice * itemTotal;
       }
       return totalPrice;
     } else {
       return totalPrice;
     }
+  }
+
+  void changeTotalCount(int indexOf, String process) {
+    int beforeTotal = int.parse(basketList[indexOf]["total"]);
+    if (beforeTotal > 0) {
+      basketList[indexOf]["total"] = process == "+"
+          ? (beforeTotal + 1).toString()
+          : (beforeTotal - 1).toString();
+      totalPrice = getTotalPrice();
+    }
+    notifyListeners();
   }
 }
