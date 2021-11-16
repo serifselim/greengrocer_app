@@ -40,7 +40,7 @@ class BasketListItem extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text('0'),
+                  Text(product["total"]),
                   IconButton(
                     onPressed: null,
                     icon: Icon(

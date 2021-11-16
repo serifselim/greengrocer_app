@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/components/basket/basket_list.dart';
+import 'package:greengrocer_app/components/basket/basket_purchase.dart';
 import 'package:greengrocer_app/components/nav/nav_bar.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
 import 'package:greengrocer_app/provider/product_modal.dart';
@@ -15,6 +16,7 @@ class BasketPage extends StatefulWidget {
 }
 
 class _BasketPageState extends State<BasketPage> {
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductModal>(builder: (context, data, child) {
@@ -36,46 +38,15 @@ class _BasketPageState extends State<BasketPage> {
                         title: 'Your Basket',
                       ),
                       kSpacer(33.0),
-                      BasketList(data: data),
+                      BasketList(
+                        data: data,
+                      ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 20.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          kTitleH2(context: context, title: 'Total'),
-                          kTitleH2(context: context, title: '\$300')
-                        ],
-                      ),
-                      TextButton(
-                        onPressed: null,
-                        child: const Text(
-                          'Purchase',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              const Color(0xFF6FCF97)),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              BasketPurchase(
+                data: data,
               )
             ],
           ));

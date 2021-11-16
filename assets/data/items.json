@@ -1,36 +1,42 @@
 {
     "products": [
       {
+        "total": "1",
         "name": "Banana",
         "price" : "1.32",
         "weight": "by weight $1.32kg",
         "image" : "assets/images/banana.png"
       },
       {
+        "total": "1",
         "name": "Cabbage",
         "price" : "0.82",
         "weight": "by weight $0.82kg",
         "image" : "assets/images/cabbage.png"
       },
       {
+        "total": "1",
         "name": "Tomatto",
         "price" : "1.23",
         "weight": "by weight $1.23kg",
         "image" : "assets/images/tomatto.png"
       },
       {
+        "total": "1",
         "name": "Egg plant",
         "price" : "0.82",
         "weight": "by weight $0.82kg",
         "image" : "assets/images/egg-plant.png"
       },
       {
+        "total": "1",
         "name": "Lettuce",
         "price" : "1.26",
         "weight": "by weight $1.26kg",
         "image" : "assets/images/lettuce.png"
       },
       {
+        "total": "1",
         "name": "Potato",
         "price" : "1.17",
         "weight": "by weight $1.17kg",
