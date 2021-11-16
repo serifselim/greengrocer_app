@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/constants/style_constants.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
+import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:provider/provider.dart';
 
 class BasketListItem extends StatelessWidget {
-  final product;
+  final basketItem;
 
   const BasketListItem({
     Key? key,
-    required this.product,
+    required this.basketItem,
   }) : super(key: key);
 
   @override
@@ -27,66 +29,72 @@ class BasketListItem extends StatelessWidget {
   }
 
   Column basketListItemRightSide(BuildContext context) {
+    void changeTotalCount(String process) {
+      int currentTotal = int.parse(basketItem["total"]);
+      if (currentTotal > 1 || process != "-") {
+        Provider.of<ProductModal>(context, listen: false).changeTotalCount(
+          currentItem: basketItem,
+          process: process,
+        );
+      }
+    }
+
     return Column(
-          children: [
-            Container(
-              decoration: containerDecoration(radius: 25.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.remove,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(product["total"]),
-                  IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.add,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            kSpacer(10.0),
-            Row(
-              children: [
-                kTitleH5(
-                  context: context,
-                  title: "\$",
+      children: [
+        Container(
+          decoration: containerDecoration(radius: 25.0),
+          child: Row(
+            children: [
+              IconButton(
+                onPressed: () => changeTotalCount("-"),
+                icon: const Icon(
+                  Icons.remove,
+                  color: Colors.black,
                 ),
-                kTitleH5(
-                  context: context,
-                  title: product["price"],
-                )
-              ],
+              ),
+              Text(basketItem["total"]),
+              IconButton(
+                onPressed: () => changeTotalCount("+"),
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        ),
+        kSpacer(10.0),
+        Row(
+          children: [
+            kTitleH5(
+              context: context,
+              title: "\$",
+            ),
+            kTitleH5(
+              context: context,
+              title: basketItem["price"],
             )
           ],
-        );
+        )
+      ],
+    );
   }
 
   Row basketListItemLeftSide(BuildContext context) {
     return Row(
-          children: [
-            kImage(product["image"]),
-            Container(
-              margin: const EdgeInsets.only(left: 15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  kTitleH2(
-                      context: context,
-                      title: product["name"]),
-                  kDecs(
-                      context: context,
-                      text: product["weight"])
-                ],
-              ),
-            ),
-          ],
-        );
+      children: [
+        kImage(basketItem["image"]),
+        Container(
+          margin: const EdgeInsets.only(left: 15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              kTitleH2(context: context, title: basketItem["name"]),
+              kDecs(context: context, text: basketItem["weight"])
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

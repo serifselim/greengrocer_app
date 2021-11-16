@@ -18,8 +18,8 @@ class BasketList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: data.basketList.length,
         itemBuilder: (BuildContext context, int index) {
-          var product = data.basketList[index];
-          return BasketListItem(product: product);
+          var basketItem = data.basketList[index];
+          return BasketListItem(basketItem: basketItem);
         },
       ),
     );
