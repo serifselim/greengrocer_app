@@ -27,7 +27,7 @@ class _BasketPageState extends State<BasketPage> {
           body: Column(
             children: [
               Expanded(
-                flex: 5,
+                flex: 4,
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(

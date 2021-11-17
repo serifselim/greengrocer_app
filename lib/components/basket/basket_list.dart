@@ -13,7 +13,7 @@ class BasketList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 520,
+      height: 400,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: data.basketList.length,

@@ -42,9 +42,11 @@ class HomeProductsListItem extends StatelessWidget {
                   title: product["price"],
                 ),
                 Container(
+                  height: 40.0,
+                  width: 40.0,
                   decoration: buttonDecoration(),
                   child: IconButton(
-                    iconSize: 30.0,
+                    iconSize: 20.0,
                     onPressed: onPressed,
                     icon: const Icon(
                       Icons.add,

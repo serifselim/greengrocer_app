@@ -17,7 +17,7 @@ class BasketListItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12.0),
       margin: const EdgeInsets.only(bottom: 14.0),
-      decoration: containerDecoration(radius: 25.0),
+      decoration: containerDecoration(radius: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -42,6 +42,7 @@ class BasketListItem extends StatelessWidget {
     return Column(
       children: [
         Container(
+          height: 40.0,
           decoration: containerDecoration(radius: 25.0),
           child: Row(
             children: [
@@ -54,6 +55,7 @@ class BasketListItem extends StatelessWidget {
               ),
               Text(basketItem["total"]),
               IconButton(
+                iconSize: 20.0,
                 onPressed: () => changeTotalCount("+"),
                 icon: const Icon(
                   Icons.add,
@@ -83,7 +85,10 @@ class BasketListItem extends StatelessWidget {
   Row basketListItemLeftSide(BuildContext context) {
     return Row(
       children: [
-        kImage(basketItem["image"]),
+        SizedBox(
+          height: 50.0,
+          child: kImage(basketItem["image"]),
+        ),
         Container(
           margin: const EdgeInsets.only(left: 15.0),
           child: Column(

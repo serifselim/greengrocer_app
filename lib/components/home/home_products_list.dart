@@ -12,13 +12,13 @@ class HomeProductsList extends StatelessWidget {
     // Grid Settings
     const gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 2,
-      crossAxisSpacing: 30.0,
-      mainAxisSpacing: 30.0,
-      childAspectRatio: 1 / 1.43,
+      crossAxisSpacing: 20.0,
+      mainAxisSpacing: 20.0,
+      childAspectRatio: 1 / 1.7,
     );
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height * 1.2,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: data.productsList.length,
