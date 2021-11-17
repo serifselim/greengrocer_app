@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/constants/style_constants.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
-import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/provider/product.dart';
+import 'package:greengrocer_app/provider/provider_modal.dart';
 import 'package:provider/provider.dart';
 
 class BasketListItem extends StatefulWidget {
-  final basketItem;
+  final Product product;
 
   const BasketListItem({
     Key? key,
-    required this.basketItem,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -24,13 +25,13 @@ class _BasketListItemState extends State<BasketListItem> {
     return GestureDetector(
       onLongPress: () {
         setState(() {
-          isDeleteSide = true;
+          widget.product.changeIsDeleteActive();
         });
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 14.0),
         decoration: containerDecoration(radius: 15.0),
-        child: !isDeleteSide
+        child: !widget.product.isDeletable
             ? Container(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
@@ -48,10 +49,10 @@ class _BasketListItemState extends State<BasketListItem> {
 
   Column basketListItemRightSide(BuildContext context) {
     void changeTotalCount(String process) {
-      int currentTotal = int.parse(widget.basketItem["total"]);
+      int currentTotal = widget.product.total;
       if (currentTotal > 1 || process != "-") {
         Provider.of<ProductModal>(context, listen: false).changeTotalCount(
-          currentProduct: widget.basketItem,
+          currentProduct: widget.product,
           process: process,
         );
       }
@@ -71,7 +72,7 @@ class _BasketListItemState extends State<BasketListItem> {
                   color: Colors.black,
                 ),
               ),
-              Text(widget.basketItem["total"]),
+              Text(widget.product.total.toString()),
               IconButton(
                 iconSize: 20.0,
                 onPressed: () => changeTotalCount("+"),
@@ -92,7 +93,7 @@ class _BasketListItemState extends State<BasketListItem> {
             ),
             kTitleH5(
               context: context,
-              title: widget.basketItem["price"],
+              title: widget.product.price.toString(),
             )
           ],
         )
@@ -105,15 +106,17 @@ class _BasketListItemState extends State<BasketListItem> {
       children: [
         SizedBox(
           height: 50.0,
-          child: kImage(widget.basketItem["image"]),
+          child: kImage(
+            widget.product.imageFilePath,
+          ),
         ),
         Container(
           margin: const EdgeInsets.only(left: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              kTitleH2(context: context, title: widget.basketItem["name"]),
-              kDecs(context: context, text: widget.basketItem["weight"])
+              kTitleH2(context: context, title: widget.product.name),
+              kDecs(context: context, text: widget.product.weight)
             ],
           ),
         ),
@@ -124,11 +127,8 @@ class _BasketListItemState extends State<BasketListItem> {
   GestureDetector deleteItemSide(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('deleted');
-        Provider.of<ProductModal>(context, listen: false).deleteItemFromBasketList(widget.basketItem["name"]);
-        setState(() {
-          isDeleteSide = false;
-        });
+        Provider.of<ProductModal>(context, listen: false)
+            .deleteProductFromBasketList(widget.product);
       },
       child: Container(
         padding: const EdgeInsets.all(12.0),

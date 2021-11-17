@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/provider/product.dart';
+import 'package:greengrocer_app/provider/provider_modal.dart';
 import 'home_products_list_item.dart';
 
 class HomeProductsList extends StatelessWidget {
@@ -24,7 +25,7 @@ class HomeProductsList extends StatelessWidget {
         itemCount: data.productsList.length,
         gridDelegate: gridDelegate,
         itemBuilder: (BuildContext context, int index) {
-          var product = data.productsList[index];
+          Product product = data.productsList[index];
           return HomeProductsListItem(
             product: product,
             onPressed: () => data.addToBasketFromProducts(product),

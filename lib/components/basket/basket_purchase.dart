@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
-import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/provider/provider_modal.dart';
 
 class BasketPurchase extends StatelessWidget {
   ProductModal data;

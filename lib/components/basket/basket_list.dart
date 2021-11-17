@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/provider/provider_modal.dart';
 import 'basket_list_item.dart';
 
 class BasketList extends StatelessWidget {
@@ -18,8 +18,8 @@ class BasketList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: data.basketList.length,
         itemBuilder: (BuildContext context, int index) {
-          var basketItem = data.basketList[index];
-          return BasketListItem(basketItem: basketItem);
+          var product = data.basketList[index];
+          return BasketListItem(product: product);
         },
       ),
     );

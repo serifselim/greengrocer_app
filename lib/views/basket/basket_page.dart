@@ -5,7 +5,7 @@ import 'package:greengrocer_app/components/basket/basket_list.dart';
 import 'package:greengrocer_app/components/basket/basket_purchase.dart';
 import 'package:greengrocer_app/components/nav/nav_bar.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
-import 'package:greengrocer_app/provider/product_modal.dart';
+import 'package:greengrocer_app/provider/provider_modal.dart';
 import 'package:provider/provider.dart';
 
 class BasketPage extends StatefulWidget {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/constants/style_constants.dart';
 import 'package:greengrocer_app/constants/widget_constants.dart';
+import 'package:greengrocer_app/provider/product.dart';
 
 class HomeProductsListItem extends StatelessWidget {
-  final dynamic product;
+  final Product product;
   final VoidCallback onPressed;
   const HomeProductsListItem(
       {Key? key, required this.product, required this.onPressed})
@@ -21,16 +22,16 @@ class HomeProductsListItem extends StatelessWidget {
             alignment: Alignment.center,
             margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
             child: kImage(
-              product["image"],
+              product.imageFilePath,
             ),
           ),
           kTitleH2(
             context: context,
-            title: product["name"],
+            title: product.name,
           ),
           kDecs(
             context: context,
-            text: product["weight"],
+            text: product.weight,
           ),
           Container(
             margin: const EdgeInsets.only(top: 10.0),
@@ -39,7 +40,7 @@ class HomeProductsListItem extends StatelessWidget {
               children: <Widget>[
                 kTitleH2(
                   context: context,
-                  title: product["price"],
+                  title: product.price.toString(),
                 ),
                 Container(
                   height: 40.0,
