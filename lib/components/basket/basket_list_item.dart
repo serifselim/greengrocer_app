@@ -30,7 +30,7 @@ class _BasketListItemState extends State<BasketListItem> {
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 14.0),
-        decoration: containerDecoration(radius: 15.0),
+        decoration: containerDecoration(radius: 15.0, color: widget.product.isDeletable ? Colors.red : Colors.white),
         child: !widget.product.isDeletable
             ? Container(
                 padding: const EdgeInsets.all(12.0),
@@ -124,21 +124,16 @@ class _BasketListItemState extends State<BasketListItem> {
     );
   }
 
-  GestureDetector deleteItemSide(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
+  TextButton deleteItemSide(BuildContext context) {
+    return TextButton(
+      onPressed: () {
         Provider.of<ProductModal>(context, listen: false)
             .deleteProductFromBasketList(widget.product);
       },
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        decoration: containerDecoration(radius: 15.0, color: Colors.red),
-        child: const Center(
-          child: Icon(
-            Icons.delete_forever,
-            color: Colors.white,
-          ),
-        ),
+      child: const Icon(
+        Icons.delete_forever,
+        color: Colors.white,
+        size: 35.0,
       ),
     );
   }

@@ -3,16 +3,14 @@ class Product {
   String weight;
   String imageFilePath;
   double price;
-  int total;
-  bool isDeletable;
+  int total = 1;
+  bool isDeletable = false;
 
   Product({
     required this.name,
     required this.weight,
     required this.imageFilePath,
     required this.price,
-    required this.total,
-    required this.isDeletable
   });
 
   void changeIsDeleteActive(){

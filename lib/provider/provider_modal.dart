@@ -24,10 +24,8 @@ class ProductModal extends ChangeNotifier {
     final productData = Product(
       name: product["name"],
       price: double.parse(product["price"]),
-      total: 1,
       weight: product["weight"],
       imageFilePath: product["imageFilePath"],
-      isDeletable: false,
     );
 
     return productData;
