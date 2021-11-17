@@ -15,24 +15,24 @@ class ProductModal extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addToBasketFromProducts(dynamic product) {
+  void addToBasketFromProducts(dynamic currentProduct) {
     bool isThere = false;
 
     if (basketList.isEmpty) {
-      basketList.add(product);
+      basketList.add(currentProduct);
       totalPrice = getTotalPrice();
     } else {
       for (var basketItem in basketList) {
-        if (basketItem["name"] == product["name"]) {
+        if (basketItem["name"] == currentProduct["name"]) {
           isThere = true;
           changeTotalCount(
-            currentItem: basketItem,
+            currentProduct: basketItem,
             process: "+"
           );
         }
       }
       if (!isThere) {
-        basketList.add(product);
+        basketList.add(currentProduct);
         totalPrice = getTotalPrice();
       } else {
         print('there is!');
@@ -43,7 +43,7 @@ class ProductModal extends ChangeNotifier {
 
   double getTotalPrice() {
     double totalPrice = 0.0;
-    if (basketList.length > 1) {
+    if (basketList.isNotEmpty) {
       for (var basketItem in basketList) {
         double itemPrice = double.parse(basketItem["price"]);
         double itemTotal = double.parse(basketItem["total"]);
@@ -56,8 +56,8 @@ class ProductModal extends ChangeNotifier {
     }
   }
 
-  void changeTotalCount({required dynamic currentItem, required String process}) {
-    int indexOf = basketList.indexOf(currentItem);
+  void changeTotalCount({required dynamic currentProduct, required String process}) {
+    int indexOf = basketList.indexOf(currentProduct);
     int beforeTotal = int.parse(basketList[indexOf]["total"]);
 
     if (beforeTotal > 0) {
@@ -68,4 +68,11 @@ class ProductModal extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void deleteItemFromBasketList(String productName){
+    basketList.removeWhere((item) => item["name"] == productName);
+    totalPrice = getTotalPrice();
+    notifyListeners();
+  }
 }
+
