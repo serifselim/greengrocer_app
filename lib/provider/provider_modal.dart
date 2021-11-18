@@ -5,9 +5,10 @@ import 'package:greengrocer_app/provider/product.dart';
 
 class ProductModal extends ChangeNotifier {
   List<Product> productsList = [];
-  List<dynamic> basketList = [];
+  List<Product> basketList = [];
   double totalPrice = 0;
 
+  // Products Funcs
   Future<void> getProductsFromJson() async {
     const String assetURL = 'assets/data/items.json';
     List<dynamic> productsData = await convertJsonFile(assetURL);
@@ -39,29 +40,8 @@ class ProductModal extends ChangeNotifier {
     return products;
   }
 
-  void addToBasketFromProducts(Product currentProduct) {
-    bool isThere = false;
 
-    if (basketList.isEmpty) {
-      basketList.add(currentProduct);
-      totalPrice = getTotalPrice();
-    } else {
-      for (var basketItem in basketList) {
-        if (basketItem.name == currentProduct.name) {
-          isThere = true;
-          changeTotalCount(currentProduct: basketItem, process: "+");
-        }
-      }
-      if (!isThere) {
-        basketList.add(currentProduct);
-        totalPrice = getTotalPrice();
-      } else {
-        print('there is!');
-      }
-    }
-    notifyListeners();
-  }
-
+  // Price and Count Funcs
   double getTotalPrice() {
     double totalPrice = 0.0;
     if (basketList.isNotEmpty) {
@@ -92,8 +72,37 @@ class ProductModal extends ChangeNotifier {
     notifyListeners();
   }
 
+
+  // Basket Funcs
+  void addToBasketFromProducts(Product currentProduct) {
+    bool isThere = false;
+
+    if (basketList.isEmpty) {
+      basketList.add(currentProduct);
+      totalPrice = getTotalPrice();
+    } else {
+      for (var basketItem in basketList) {
+        if (basketItem.name == currentProduct.name) {
+          isThere = true;
+          changeTotalCount(currentProduct: basketItem, process: "+");
+        }
+      }
+      if (!isThere) {
+        basketList.add(currentProduct);
+        totalPrice = getTotalPrice();
+      }
+    }
+    notifyListeners();
+  }
+
   void deleteProductFromBasketList(Product product) {
     basketList.remove(product);
+    totalPrice = getTotalPrice();
+    notifyListeners();
+  }
+
+  void clearBasketList() {
+    basketList.clear();
     totalPrice = getTotalPrice();
     notifyListeners();
   }

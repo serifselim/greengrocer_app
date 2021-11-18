@@ -18,53 +18,76 @@ class HomeProductsListItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
-            child: kImage(
-              product.imageFilePath,
-            ),
-          ),
-          kTitleH2(
-            context: context,
-            title: product.name,
-          ),
-          kDecs(
-            context: context,
-            text: product.weight,
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                kTitleH2(
-                  context: context,
-                  title: product.price.toString(),
-                ),
-                Container(
-                  height: 40.0,
-                  width: 40.0,
-                  decoration: buttonDecoration(),
-                  child: IconButton(
-                    iconSize: 20.0,
-                    onPressed: onPressed,
-                    icon: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
+          productImage(),
+          productTitle(context),
+          productDescription(context),
+          productDetails(context)
         ],
       ),
     );
   }
 
+  Text productTitle(BuildContext context) {
+    return kTitleH2(
+      context: context,
+      title: product.name,
+    );
+  }
+
+  Text productDescription(BuildContext context) {
+    return kDecs(
+      context: context,
+      text: product.weight,
+    );
+  }
+
+  Container productDetails(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: [
+              kDolarIcon(context: context),
+              kTitleH2(
+                context: context,
+                title: product.price.toString(),
+              ),
+            ],
+          ),
+          addProductButton()
+        ],
+      ),
+    );
+  }
+
+  Container addProductButton() {
+    return Container(
+      height: 40.0,
+      width: 40.0,
+      decoration: buttonDecoration(),
+      child: IconButton(
+        iconSize: 20.0,
+        onPressed: onPressed,
+        icon: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Container productImage() {
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
+      child: kImage(
+        product.imageFilePath,
+      ),
+    );
+  }
+
   // Style Side
-
-
 
 }

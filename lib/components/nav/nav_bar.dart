@@ -1,10 +1,14 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget with PreferredSizeWidget {
   final dynamic currentRoute;
+  final int basketCount;
 
   const NavBar({
     required this.currentRoute,
+    required this.basketCount,
     Key? key,
   }) : super(key: key);
 
@@ -23,19 +27,38 @@ class NavBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   Container basketButton(BuildContext context) {
+    final String basketCountText = basketCount.toString();
+
     return Container(
-      margin: const EdgeInsets.only(right: 30.0),
-      child: IconButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/basket');
-        },
-        icon: const Icon(
-          Icons.shopping_basket_outlined,
-          color: Colors.black,
-          size: 32.0,
-        ),
-      ),
-    );
+        margin: const EdgeInsets.only(right: 30.0),
+        child: Row(
+          children: <Widget>[
+            basketCount > 0 ? Container(
+              alignment: Alignment.center,
+              width: 22.0,
+              height: 22.0,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Color(0xFF6FCF97)),
+              child: Text(
+                basketCountText,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ) : Container(),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/basket');
+              },
+              icon: Icon(
+                Icons.shopping_basket_outlined,
+                color: basketCount > 0 ? const Color(0xFF6FCF97) : Colors.black,
+                size: 32.0,
+              ),
+            ),
+          ],
+        ));
   }
 
   Container backButton(BuildContext context) {

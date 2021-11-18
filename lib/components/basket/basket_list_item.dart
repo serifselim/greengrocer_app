@@ -18,31 +18,35 @@ class BasketListItem extends StatefulWidget {
 }
 
 class _BasketListItemState extends State<BasketListItem> {
-  bool isDeleteSide = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onLongPress: () {
         setState(() {
-          widget.product.changeIsDeleteActive();
+          widget.product.changeIsDeletable();
         });
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 14.0),
-        decoration: containerDecoration(radius: 15.0, color: widget.product.isDeletable ? Colors.red : Colors.white),
+        decoration: containerDecoration(
+            radius: 15.0,
+            color: widget.product.isDeletable ? Colors.red : Colors.white),
         child: !widget.product.isDeletable
-            ? Container(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    basketListItemLeftSide(context),
-                    basketListItemRightSide(context)
-                  ],
-                ),
-              )
+            ? basketItemSide(context)
             : deleteItemSide(context),
+      ),
+    );
+  }
+
+  Container basketItemSide(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          basketListItemLeftSide(context),
+          basketListItemRightSide(context)
+        ],
       ),
     );
   }
@@ -55,7 +59,7 @@ class _BasketListItemState extends State<BasketListItem> {
           currentProduct: widget.product,
           process: process,
         );
-      }
+      } 
     }
 
     return Column(
@@ -74,7 +78,6 @@ class _BasketListItemState extends State<BasketListItem> {
               ),
               Text(widget.product.total.toString()),
               IconButton(
-                iconSize: 20.0,
                 onPressed: () => changeTotalCount("+"),
                 icon: const Icon(
                   Icons.add,
@@ -87,9 +90,9 @@ class _BasketListItemState extends State<BasketListItem> {
         kSpacer(10.0),
         Row(
           children: [
-            kTitleH5(
+            kDolarIcon(
               context: context,
-              title: "\$",
+              size: 15.0
             ),
             kTitleH5(
               context: context,

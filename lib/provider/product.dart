@@ -13,7 +13,7 @@ class Product {
     required this.price,
   });
 
-  void changeIsDeleteActive(){
+  void changeIsDeletable(){
     isDeletable = !isDeletable;
   }
 }

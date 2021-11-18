@@ -22,6 +22,7 @@ class _BasketPageState extends State<BasketPage> {
     return Consumer<ProductModal>(builder: (context, data, child) {
       return Scaffold(
           appBar: NavBar(
+            basketCount: data.basketList.length,
             currentRoute: ModalRoute.of(context)?.settings.name,
           ),
           body: Column(

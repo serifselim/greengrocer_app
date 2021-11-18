@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:greengrocer_app/components/home/home_products_list.dart';
 import 'package:greengrocer_app/components/nav/nav_bar.dart';
@@ -27,12 +29,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final String? routeName = ModalRoute.of(context)?.settings.name;
+
     return Consumer<ProductModal>(
       builder: (context, data, child) {
         var products = data.productsList;
         return Scaffold(
           appBar: NavBar(
-            currentRoute: ModalRoute.of(context)?.settings.name,
+            basketCount : data.basketList.length,
+            currentRoute: routeName,
           ),
           body: Container(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
