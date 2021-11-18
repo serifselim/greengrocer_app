@@ -1,4 +1,4 @@
-# GreenGrocer App
+# Greengrocer App
 
 <img src="https://cdn.discordapp.com/attachments/849916105144139807/910813148376866877/Screenshot_1.png" />
 
